@@ -17,15 +17,14 @@ void		*ft_memalloc(size_t size)
 	size_t	i;
 	char	*buffer;
 
-	buffer = (char *)malloc(size);
-	if (buffer != NULL)
+	i = 0;
+	buffer = (char *)malloc(sizeof(char) * (size));
+	if (buffer == NULL)
+		return (NULL);
+	while (i < size)
 	{
-		i = 0;
-		while (i < size)
-		{
-			buffer[i] = 0;
-			i++;
-		}
+		buffer[i] = 0;
+		i++;
 	}
 	return ((void *)buffer);
 }

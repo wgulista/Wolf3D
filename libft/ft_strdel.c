@@ -12,14 +12,11 @@
 
 #include "includes/libft.h"
 
-void	ft_strdel(char **ap)
+void		ft_strdel(char **ap)
 {
-	size_t	i;
-
-	i = 0;
-	while (ap[i] != NULL)
+	if (ap != NULL)
 	{
-		ft_memdel((void **)ap);
-		i++;
+		free(*ap);
+		*ap = NULL;
 	}
 }

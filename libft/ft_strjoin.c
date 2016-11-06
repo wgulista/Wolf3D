@@ -14,38 +14,42 @@
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {
-	size_t		size1;
-	size_t		size2;
-	char		*new_str;
+	int		i;
+	int		j;
+	char	*str;
 
-	size1 = ft_strlen(s1);
-	size2 = ft_strlen(s2);
-	new_str = ft_strnew(size1 + size2);
-	if (new_str != NULL)
+	if (s1 && s2)
 	{
-		ft_strcpy(new_str, s1);
-		ft_strcpy(&(new_str[size1]), s2);
+		i = ft_strlen(s1);
+		j = ft_strlen(s2);
+		str = ft_memalloc((i + j) * sizeof(str));
+		j = 0;
+		ft_strcpy(str, s1);
+		ft_strcat(str, s2);
+		return (str);
 	}
-	return (new_str);
+	return (0);
 }
 
 char	*ft_strjoin_free(const char *s1, const char *s2, int freed)
 {
-	size_t		size1;
-	size_t		size2;
-	char		*new_str;
+	int		i;
+	int		j;
+	char	*str;
 
-	size1 = ft_strlen(s1);
-	size2 = ft_strlen(s2);
-	new_str = ft_strnew(size1 + size2);
-	if (new_str != NULL)
+	if (s1 && s2)
 	{
-		ft_strcpy(new_str, s1);
-		ft_strcpy(&(new_str[size1]), s2);
+		i = ft_strlen(s1);
+		j = ft_strlen(s2);
+		str = ft_memalloc((i + j) * sizeof(str));
+		j = 0;
+		ft_strcpy(str, s1);
+		ft_strcat(str, s2);
+		if (freed == 1)
+			free((void*)s1);
+		else
+			free((void*)s2);
+		return (str);
 	}
-	if (freed == 1)
-		free((void*)s1);
-	else
-		free((void*)s2);
-	return (new_str);
+	return (0);
 }

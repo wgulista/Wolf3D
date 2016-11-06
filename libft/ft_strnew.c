@@ -16,10 +16,7 @@ char	*ft_strnew(size_t size)
 {
 	char	*buffer;
 
-	if (!(buffer = (char *)malloc(sizeof(char) * (size + 1))))
-	{
-		free(buffer);
+	if (!(buffer = (char *)ft_memalloc(sizeof(char) * (size))))
 		return (NULL);
-	}
 	return (buffer);
 }
