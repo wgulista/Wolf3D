@@ -38,6 +38,7 @@ t_w3d		*init_w3d()
 	w = (t_w3d*)malloc(sizeof(t_w3d) * 1);
 	w->pos_x = 22;
 	w->pos_y = 12;
+	w->pos_z = 6;
 	w->dir_x = -1;
 	w->dir_y = 0;
 	w->plane_x = 0.0;

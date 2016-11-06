@@ -20,9 +20,9 @@ int			main(int ac, char **av)
 			ft_msg_error("TEXTURE CREATION FAIL");
 		mlx_hook(e->win, EXPOSE, EXPOSE_MASK, expose_hook, e);
 		mlx_hook(e->win, KEYPRESS, KEYPRESS_MASK, key_hook, e);
-		/*mlx_hook(e->win, KEYRELEASE, KEYRELEASE_MASK, key_release, e);
-		mlx_hook(e->win, BUTTONPRESS, BUTTONPRESS_MASK, mouse_hook, e);
-		mlx_hook(e->win, MOTION_NOTIFY, MOTION_MASK, mouse_motion, e);*/
+		mlx_hook(e->win, KEYRELEASE, KEYRELEASE_MASK, key_release, e);
+		//mlx_hook(e->win, BUTTONPRESS, BUTTONPRESS_MASK, mouse_hook, e);
+		//mlx_hook(e->win, MOTION_NOTIFY, MOTION_MASK, mouse_motion, e);
 		mlx_hook(e->win, DESTROY_NOTIFY, DESTROY_MASK, quit_program, e);
 		mlx_loop(e->mlx);
 		free(e);

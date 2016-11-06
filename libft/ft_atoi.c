@@ -34,23 +34,25 @@ static char		*ft_test_sign(const char *s, int *i, int *ispositive)
 
 int				ft_atoi(const char *str)
 {
-	int	i;
-	int	result;
-	int	ispositive;
+	int			i;
+	int			result;
+	int			ispositive;
+	char		*tmp;
 
 	i = 0;
 	result = 0;
 	ispositive = 1;
-	str = ft_strtrim(str);
-	while (str[i] != 0 && ft_isspace(str[i]) && ft_isalpha(str[i]))
+	tmp = ft_strtrim(str);
+	while (tmp[i] != 0 && ft_isspace(tmp[i]) && ft_isalpha(tmp[i]))
 		i++;
-	if (!ft_isdigit(str[i]) && !ft_issign(str[i]))
+	if (!ft_isdigit(tmp[i]) && !ft_issign(tmp[i]))
 		return (0);
-	str = ft_test_sign(str, &i, &ispositive);
-	while (ft_isdigit(str[i]))
+	tmp = ft_test_sign(tmp, &i, &ispositive);
+	while (ft_isdigit(tmp[i]))
 	{
-		result = result * 10 + (str[i] - 48);
+		result = result * 10 + (tmp[i] - 48);
 		i++;
 	}
+	free(tmp);
 	return (result * (int)ispositive);
 }

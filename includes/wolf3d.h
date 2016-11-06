@@ -58,6 +58,7 @@ typedef	struct		s_w3d
 {
 	double			pos_x;
 	double			pos_y;
+	double			pos_z;
 	double			dir_x;
 	double			dir_y;
 	double			plane_x;
@@ -107,6 +108,7 @@ int					key_release(int keycode, t_env *e);
 int					mouse_motion(int x, int y, t_env *e);
 int					mouse_hook(int button, int x, int y, t_env *e);
 int					expose_hook(t_env *e);
+void				menu_put_to_image(t_env *e);
 void				sky_put_to_image(t_env *e, double x, double y);
 void				ground_put_to_image(t_env *e, double x, double y);
 void				pixel_put_to_image(t_env *e, double x, double y, int color);
@@ -120,6 +122,10 @@ void				init_env_value(t_env *e);
 int					init_texture(t_env *e);
 void				init_img_value(t_env *e);
 void				draw_map(t_env *e);
+void				move_up(t_env *e);
+void				move_right(t_env *e);
+void				move_down(t_env *e);
+void				move_left(t_env *e);
 void				move(t_env *e);
 int 				draw_vertical_line(t_env *e, double x, int start, int end);
 //int 				draw_vertical_line(t_env *e, double x);

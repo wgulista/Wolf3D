@@ -2,32 +2,54 @@
 
 void		move_up(t_env *e)
 {
-	(void)e;
+	if (e->worldmap[(int)(e->w->pos_x + e->w->dir_x * 0.05)][(int)(e->w->pos_y)] == 0)
+			e->w->pos_x += e->w->dir_x * 0.05;
+	if (e->worldmap[(int)(e->w->pos_x)][(int)(e->w->pos_y + e->w->dir_y * 0.05)] == 0)
+		e->w->pos_y += e->w->dir_y * 0.05;
 }
 
 void		move_right(t_env *e)
 {
-	(void)e;
+	double	olddirx;
+	double	oldplanex;
+
+	olddirx = e->w->dir_x;
+	e->w->dir_x = e->w->dir_x * cos(-1 * 0.05) - e->w->dir_y * sin(-1 * 0.05);
+	e->w->dir_y = olddirx * sin(-1 * 0.05) + e->w->dir_y * cos(-1 * 0.05);
+	oldplanex = e->w->plane_x;
+	e->w->plane_x = e->w->plane_x * cos(-1 * 0.05) - e->w->plane_y * sin(-1 * 0.05);
+	e->w->plane_y = oldplanex * sin(-1 * 0.05) + e->w->plane_y * cos(-1 * 0.05);
 }
 
 void		move_down(t_env *e)
 {
-	(void)e;
+	if (e->worldmap[(int)(e->w->pos_x - e->w->dir_x * 0.05)][(int)(e->w->pos_y)] == 0)
+		e->w->pos_x -= e->w->dir_x * 0.05;
+	if (e->worldmap[(int)(e->w->pos_x)][(int)(e->w->pos_y - e->w->dir_y * 0.05)] == 0)
+		e->w->pos_y -= e->w->dir_y * 0.05;
 }
 
 void		move_left(t_env *e)
 {
-	(void)e;
+	double	olddirx;
+	double	oldplanex;
+
+	olddirx = e->w->dir_x;
+	e->w->dir_x = e->w->dir_x * cos(0.05) - e->w->dir_y * sin(0.05);
+	e->w->dir_y = olddirx * sin(0.05) + e->w->dir_y * cos(0.05);
+	oldplanex = e->w->plane_x;
+	e->w->plane_x = e->w->plane_x * cos(0.05) - e->w->plane_y * sin(0.05);
+	e->w->plane_y = oldplanex * sin(0.05) + e->w->plane_y * cos(0.05);
 }
 
 void		move(t_env *e)
 {
 	if (e->key.up)
 		move_up(e);
-	if (e->key.right)
+	else if (e->key.right)
 		move_right(e);
-	if (e->key.down)
+	else if (e->key.down)
 		move_down(e);
-	if (e->key.left)
+	else if (e->key.left)
 		move_left(e);
 }

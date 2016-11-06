@@ -39,6 +39,17 @@ void		ground_put_to_image(t_env *e, double x, double y)
 	e->img[0].data[pos + 2] = e->img[2].data[pos + 2];
 }
 
+void		menu_put_to_image(t_env *e)
+{
+	void	*menu;
+	int		a;
+	int		b;
+
+	menu = mlx_xpm_file_to_image(e->mlx, "./img/ciel.xpm", &a, &b);
+	mlx_put_image_to_window(e->mlx, e->win, menu, 0, 0);
+	mlx_put_image_to_window(e->mlx, e->win, menu, 0, 0);
+}
+
 int 		draw_vertical_line(t_env *e, double x, int start, int end)
 {
 	int y;
@@ -49,7 +60,22 @@ int 		draw_vertical_line(t_env *e, double x, int start, int end)
 		if (y < start)
 			sky_put_to_image(e, x, y);
 		else if (y >= start && y <= end)
-			pixel_put_to_image(e, x, y, 0x659847);
+		{
+			if (e->w->side == 0)
+			{
+				if (e->w->step_x <= 0)
+					pixel_put_to_image(e, x, y, 0xCC0000);
+				else
+					pixel_put_to_image(e, x, y, 0xFFFF00);
+			}
+			else
+			{
+				if (e->w->step_y <= 0)
+					pixel_put_to_image(e, x, y, 0x33FF33);
+				else
+					pixel_put_to_image(e, x, y, 0x0000FF);
+			}
+		}
 		else if (y > end)
 			ground_put_to_image(e, x, y);
 		y++;
