@@ -2,10 +2,6 @@
 
 int				key_hook2(int keycode, t_env *e)
 {
-	if (keycode == KEY_W)
-		see_up(e);
-	if (keycode == KEY_S)
-		see_down(e);
 	if (keycode == KEY_A)
 		straffe_left(e);
 	if (keycode == KEY_D)
