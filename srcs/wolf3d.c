@@ -3,7 +3,8 @@
 
 void			init_value_w3d(t_w3d *w)
 {
-	w->cameraX = 1.5 * w->x / (double)(WIDTH) - 1;
+	w->cameraX = 2 * w->x / (double)(WIDTH) - 1;
+	ft_putnbr(w->cameraX);
 	w->ray_pos_x = w->pos_x;
 	w->ray_pos_y = w->pos_y;
 	w->ray_dir_x = w->dir_x + w->plane_x * w->cameraX;

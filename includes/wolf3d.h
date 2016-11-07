@@ -21,6 +21,10 @@
 # define KEY_1				18
 # define KEY_2				19
 # define KEY_3				20
+# define KEY_W				13
+# define KEY_S				1
+# define KEY_A				0
+# define KEY_D				2
 # define KEYRELEASE 		3
 # define KEYRELEASE_MASK	(1L<<1)
 # define KEYPRESS 			2
@@ -125,12 +129,15 @@ void				init_env_value(t_env *e);
 int					init_texture(t_env *e);
 void				init_img_value(t_env *e);
 void				draw_map(t_env *e);
+void				see_up(t_env *e);
+void				see_down(t_env *e);
+void				straffe_left(t_env *e);
+void				straffe_right(t_env *e);
 void				move_up(t_env *e);
 void				move_right(t_env *e);
 void				move_down(t_env *e);
 void				move_left(t_env *e);
 void				move(t_env *e);
 int 				draw_vertical_line(t_env *e, double x, int start, int end);
-//int 				draw_vertical_line(t_env *e, double x);
 
 #endif

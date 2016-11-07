@@ -1,5 +1,18 @@
 #include "../includes/wolf3d.h"
 
+int				key_hook2(int keycode, t_env *e)
+{
+	if (keycode == KEY_W)
+		see_up(e);
+	if (keycode == KEY_S)
+		see_down(e);
+	if (keycode == KEY_A)
+		straffe_left(e);
+	if (keycode == KEY_D)
+		straffe_right(e);
+	return (0);
+}
+
 int				key_hook(int keycode, t_env *e)
 {
 	if (keycode == H)
@@ -22,6 +35,7 @@ int				key_hook(int keycode, t_env *e)
 		e->key.run = 2;
 	if (keycode == ECHAP)
 		quit_program(e);
+	key_hook2(keycode, e);
 	expose_hook(e);
 	return (0);
 }

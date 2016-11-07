@@ -52,6 +52,10 @@ int 		draw_vertical_line(t_env *e, double x, int start, int end)
 	y = start;
 	while (y < end)
 	{
+		if (e->w->side_dist_x < e->w->side_dist_y / 2)
+		{
+			pixel_put_to_image(e, x, y, 0xCC0000);
+		}
 		if (e->w->side == 0)
 		{
 			if (e->w->step_x <= 0)
