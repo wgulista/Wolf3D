@@ -56,6 +56,7 @@ typedef struct 		s_arrow
 	int				rot;
 	int				run;
 	int				space;
+	int 			seeup;
 }					t_arrow;
 
 typedef	struct		s_w3d

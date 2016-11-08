@@ -29,6 +29,10 @@ int				key_hook(int keycode, t_env *e)
 		e->key.left = 1;
 	if (keycode == 15)
 		e->key.run = 2;
+	if (keycode == KEY_W)
+	{
+		
+	}
 	if (keycode == ECHAP)
 		quit_program(e);
 	key_hook2(keycode, e);

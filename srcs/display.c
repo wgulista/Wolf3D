@@ -59,14 +59,14 @@ int 		draw_vertical_line(t_env *e, double x, int start, int end)
 		if (e->w->side == 0)
 		{
 			if (e->w->step_x <= 0)
-				pixel_put_to_image(e, x, y, 0xCC0000);
+				pixel_put_to_image(e, x, y, 0xFF0000);
 			else
 				pixel_put_to_image(e, x, y, 0xFFFF00);
 		}
 		else
 		{
 			if (e->w->step_y <= 0)
-				pixel_put_to_image(e, x, y, 0x33FF33);
+				pixel_put_to_image(e, x, y, 0x00FF00);
 			else
 				pixel_put_to_image(e, x, y, 0x0000FF);
 		}

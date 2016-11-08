@@ -34,7 +34,7 @@ char			***cut_map(t_env *e, char *file)
 	if (!(ret = (char***)malloc(sizeof(char**) * (e->mapHeight + 1))))
 		return (NULL);
 	i = 0;
-	while (tab[i])
+	while (i < e->mapHeight && tab[i] != NULL)
 	{
 		ret[i] = ft_strsplit(tab[i], ' ');
 		ft_strdel(&tab[i]);

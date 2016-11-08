@@ -9,6 +9,7 @@ void	init_arrow(t_arrow *key)
 	key->rot = 0;
 	key->run = 0;
 	key->space = 0;
+	key->seeup = 0;
 }
 
 int			init_texture(t_env *e)

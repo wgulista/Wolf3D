@@ -69,7 +69,7 @@ void			check_hit_wall(t_env *e, t_w3d *w)
 void			calc_height_draw(t_w3d *w)
 {
 	w->line_height = abs((int)(HEIGHT / (w->perp_wall_dist)));
-	w->start = -(w->line_height) / 2 + HEIGHT / 2;
+	w->start = (-1 * w->line_height) / 2 + HEIGHT / 2;
 	if (w->start < 0) 
 		w->start = 0;
 	w->end = w->line_height / 2 + HEIGHT / 2;
