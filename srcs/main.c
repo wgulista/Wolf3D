@@ -1,13 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wgulista <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/08 15:57:29 by wgulista          #+#    #+#             */
+/*   Updated: 2016/11/08 15:59:04 by wgulista         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/wolf3d.h"
 
-int			main()
+int			main(void)
 {
 	t_env	*e;
 
 	if (!(e = (t_env *)malloc(sizeof(t_env) * 1)))
 		ft_msg_error("Malloc Env Fail");
-	if (!(e->worldmap = generate_map(e, "./map/map1.txt")))
-		ft_msg_error("Usage: ./wolf3d <map_file>");
 	if (!(e->mlx = mlx_init()))
 		ft_msg_error("MLX INIT FAIL");
 	if (!(e->win = mlx_new_window(e->mlx, WIDTH, HEIGHT, "Wolf3D")))
@@ -19,8 +29,6 @@ int			main()
 	mlx_hook(e->win, EXPOSE, EXPOSE_MASK, expose_hook, e);
 	mlx_hook(e->win, KEYPRESS, KEYPRESS_MASK, key_hook, e);
 	mlx_hook(e->win, KEYRELEASE, KEYRELEASE_MASK, key_release, e);
-	//mlx_hook(e->win, BUTTONPRESS, BUTTONPRESS_MASK, mouse_hook, e);
-	//mlx_hook(e->win, MOTION_NOTIFY, MOTION_MASK, mouse_motion, e);
 	mlx_hook(e->win, DESTROY_NOTIFY, DESTROY_MASK, quit_program, e);
 	mlx_loop(e->mlx);
 	return (0);

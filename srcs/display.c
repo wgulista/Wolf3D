@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wgulista <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/08 15:56:42 by wgulista          #+#    #+#             */
+/*   Updated: 2016/11/08 16:10:48 by wgulista         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/wolf3d.h"
 
 void		pixel_put_to_image(t_env *e, double x, double y, int color)
@@ -29,33 +41,23 @@ void		sky_put_to_image(t_env *e, double x, double y)
 	e->img[0].data[pos + 2] = e->img[1].data[pos + 2];
 }
 
-void		ground_put_to_image(t_env *e, double x, double y)
+void		draw_ground_and_sky(t_env *e, int x, int end)
 {
-	int		pos;
-
-	pos = ((y * e->img[0].sline) + (x * (e->img[0].bpp / 8)));
-	e->img[0].data[pos] = e->img[2].data[pos];
-	e->img[0].data[pos + 1] = e->img[2].data[pos + 1];
-	e->img[0].data[pos + 2] = e->img[2].data[pos + 2];
+	while (end < HEIGHT)
+	{
+		sky_put_to_image(e, x, HEIGHT - end - 1);
+		pixel_put_to_image(e, x, end, 0xFFFFFF);
+		end++;
+	}
 }
 
-int 		draw_vertical_line(t_env *e, double x, int start, int end)
+int			draw_vertical_line(t_env *e, double x, int start, int end)
 {
-	int y;
+	int		y;
 
-	y = 0;
-	while (y < start)
-	{
-		sky_put_to_image(e, x, y);
-		y++;
-	}
 	y = start;
 	while (y < end)
 	{
-		if (e->w->side_dist_x < e->w->side_dist_y / 2)
-		{
-			pixel_put_to_image(e, x, y, 0xCC0000);
-		}
 		if (e->w->side == 0)
 		{
 			if (e->w->step_x <= 0)
@@ -72,12 +74,6 @@ int 		draw_vertical_line(t_env *e, double x, int start, int end)
 		}
 		y++;
 	}
-	y = end;
-	while (y < HEIGHT)
-	{
-		sky_put_to_image(e, x, HEIGHT - y - 1);
-		ground_put_to_image(e, x, y);
-		y++;
-	}
+	draw_ground_and_sky(e, x, end);
 	return (1);
 }

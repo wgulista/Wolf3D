@@ -38,6 +38,8 @@ static size_t		ft_word_len(char const *s, char c)
 	size_t	len;
 
 	len = 0;
+	if (!s)
+		return (len);
 	while (*s != c && *s != '\0')
 	{
 		len++;
@@ -54,7 +56,7 @@ char				**ft_strsplit(char const *s, char c)
 
 	i = 0;
 	nbr_word = ft_count_word(s, c);
-	if (!(new = (char **)malloc(sizeof(char *) * nbr_word + 1)))
+	if (!(new = (char **)malloc(sizeof(char *) * (nbr_word + 1))))
 		return (NULL);
 	while (i < nbr_word)
 	{

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wgulista <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/08 15:57:23 by wgulista          #+#    #+#             */
+/*   Updated: 2016/11/08 15:57:24 by wgulista         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/wolf3d.h"
 
 int				key_hook2(int keycode, t_env *e)
@@ -27,12 +39,6 @@ int				key_hook(int keycode, t_env *e)
 		e->key.down = 1;
 	if (keycode == KEY_LEFT)
 		e->key.left = 1;
-	if (keycode == 15)
-		e->key.run = 2;
-	if (keycode == KEY_W)
-	{
-		
-	}
 	if (keycode == ECHAP)
 		quit_program(e);
 	key_hook2(keycode, e);

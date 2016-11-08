@@ -1,15 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wgulista <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/08 15:57:12 by wgulista          #+#    #+#             */
+/*   Updated: 2016/11/08 15:57:14 by wgulista         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/wolf3d.h"
 
-void	init_arrow(t_arrow *key)
+void		init_arrow(t_arrow *key)
 {
 	key->up = 0;
 	key->right = 0;
 	key->down = 0;
 	key->left = 0;
-	key->rot = 0;
-	key->run = 0;
-	key->space = 0;
-	key->seeup = 0;
 }
 
 int			init_texture(t_env *e)
@@ -32,25 +40,25 @@ void		init_img_value(t_env *e)
 		ft_msg_error("GET DATA ADDR FAIL");
 }
 
-t_w3d		*init_w3d()
+t_w3d		*init_w3d(void)
 {
-	t_w3d 	*w;
+	t_w3d	*w;
 
 	w = (t_w3d*)malloc(sizeof(t_w3d) * 1);
-	w->pos_x = 22;
-	w->pos_y = 12;
+	w->pos_x = 20;
+	w->pos_y = 10;
 	w->pos_z = 6;
 	w->dir_x = -1;
 	w->dir_y = 0;
 	w->plane_x = 0.0;
 	w->plane_y = 0.66;
 	return (w);
-}	
+}
 
 void		init_env_value(t_env *e)
 {
-	int 	a;
-	int 	b;
+	int		a;
+	int		b;
 
 	init_arrow(&e->key);
 	e->w = init_w3d();

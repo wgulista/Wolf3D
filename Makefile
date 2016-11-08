@@ -15,9 +15,8 @@
 NAME = wolf3d
 LIBFT = libft.a
 MINILIBX = libmlx.a
-SRC_NAME = main.c env.c error.c expose_hook.c key_hook.c mouse_hook.c move.c \
-			mouse_motion.c display.c features.c key_release.c wolf3d.c \
-			parser.c parser2.c tools.c move2.c
+SRC_NAME = main.c env.c error.c expose_hook.c key_hook.c move.c  display.c \
+			features.c key_release.c wolf3d.c map.c move2.c
 
 OBJ_PATH = obj
 SRC_PATH = srcs
