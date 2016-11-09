@@ -38,7 +38,7 @@ void		draw_sky_ground(t_env *e, int x, int end)
 	y = end;
 	while (y < HEIGHT)
 	{
-		pixel_put_to_image(e, x, HEIGHT - y - 1, 0x0000CC);
+		pixel_put_to_image(e, x, HEIGHT - y - 1, 0xCFECF2);
 		pixel_put_to_image(e, x, y, 0xCCAAFF);
 		y++;
 	}

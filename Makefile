@@ -13,34 +13,45 @@
 .PHONY: all, clean, fclean, re
 
 NAME = wolf3d
-LIBFT = libft.a
-MINILIBX = libmlx.a
+LIBFT = libft/libft.a
+MINILIBX = minilibx/libmlx.a
 SRC_NAME = main.c env.c error.c expose_hook.c key_hook.c move.c map.c \
 			display.c features.c key_release.c wolf3d.c move2.c
 OBJ_PATH = obj
 SRC_PATH = srcs
+HEADER = includes/wolf3d.h
+INC = -I includes -I libft/includes
+CFLAGS = -Wall -Wextra -Werror
 
-CFLAGS = -Wall -Wextra -Werror -g
+OBJ = $(OBJ_PATH)/display.o \
+	$(OBJ_PATH)/env.o \
+	$(OBJ_PATH)/error.o \
+	$(OBJ_PATH)/expose_hook.o \
+	$(OBJ_PATH)/features.o \
+	$(OBJ_PATH)/key_hook.o \
+	$(OBJ_PATH)/key_release.o \
+	$(OBJ_PATH)/main.o \
+	$(OBJ_PATH)/map.o \
+	$(OBJ_PATH)/move.o \
+	$(OBJ_PATH)/move2.o \
+	$(OBJ_PATH)/wolf3d.o
 
-OBJ = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))
 LIBX = -lm -L libft/ -lft -I/usr/local/include -I/usr/local/lib \
 	   -L minilibx/ -lmlx -framework OpenGL -framework AppKit
 
+VPATH = srcs
+
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
-	@gcc $(LIBX) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ)
+	@make -C ./libft/
+	@make -C ./minilibx/
+	@gcc $(LIBX) $(INC) $(OBJ) -o $(NAME)
 	@echo "\033[32mCompiling" [ $(NAME) ]"\033[0m"
 
-$(LIBFT):
-	@make -C ./libft/
-
-$(MINILIBX):
-	@make -C ./minilibx/
-
-$(addprefix $(OBJ_PATH)/, %.o): $(addprefix $(SRC_PATH)/, %.c)
+$(OBJ_PATH)/%.o: %.c $(HEADER)
 	@mkdir -p $(OBJ_PATH)
-	@gcc $(CFLAGS) -o $@ -c $^
+	@gcc -c $(CFLAGS) $(INC) $< -o $@
 	@echo "\033[33mLinking" [ $< ] "\033[0m"
 
 norme:

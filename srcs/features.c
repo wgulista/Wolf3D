@@ -39,7 +39,5 @@ void			display_menu(t_env *e)
 			"Echap - Croix : Quitter le programme");
 		mlx_string_put(e->mlx, e->win, 10, 45, 0xF8F8FF,
 			"Fleche        : Se deplacer");
-		mlx_string_put(e->mlx, e->win, 10, 60, 0xF8F8FF,
-			"Touche T      : Change la couleur");
 	}
 }

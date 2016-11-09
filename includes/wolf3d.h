@@ -16,7 +16,7 @@
 # include "../minilibx/mlx.h"
 # include <math.h>
 
-# define WIDTH				800
+# define WIDTH				900
 # define HEIGHT				600
 # define ECHAP				53
 # define KEY_UP				126
