@@ -36,6 +36,11 @@ t_w3d		*init_w3d(void)
 
 void		init_env_value(t_env *e)
 {
+	if (!(e->img[0].img = mlx_new_image(e->mlx, WIDTH, HEIGHT)))
+		ft_msg_error("CREATE IMAGE FAIL");
+	if (!(e->img[0].data = mlx_get_data_addr(e->img[0].img, &(e->img[0].bpp), \
+		&(e->img[0].sline), &(e->img[0].endian))))
+		ft_msg_error("GET DATA ADDR FAIL");
 	init_arrow(&e->key);
 	e->w = init_w3d();
 	e->help = 0;

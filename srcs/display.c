@@ -17,18 +17,9 @@ void		pixel_put_to_image(t_env *e, int x, int y, int color)
 	int		pos;
 
 	pos = ((y * e->img[0].sline) + (x * (e->img[0].bpp / 8)));
-	if (e->img[0].endian)
-	{
-		e->img[0].data[pos] = (color & 0xFF0000) >> 16;
-		e->img[0].data[pos + 1] = (color & 0x00FF00) >> 8;
-		e->img[0].data[pos + 2] = (color & 0x0000FF);
-	}
-	else
-	{
-		e->img[0].data[pos] = (color & 0x0000FF);
-		e->img[0].data[pos + 1] = (color & 0x00FF00) >> 8;
-		e->img[0].data[pos + 2] = (color & 0xFF0000) >> 16;
-	}
+	e->img[0].data[pos] = (color & 0xFF);
+	e->img[0].data[pos + 1] = (color & 0xFF00) >> 8;
+	e->img[0].data[pos + 2] = (color & 0xFFFF00) >> 16;
 }
 
 int			draw_vertical_line(t_env *e, int x, int start, int end)
@@ -40,14 +31,14 @@ int			draw_vertical_line(t_env *e, int x, int start, int end)
 	{
 		if (e->w->side == 0)
 		{
-			if (e->w->step_x <= 0)
+			if (e->w->step_x < 0)
 				pixel_put_to_image(e, x, y, 0xFF0000);
 			else
 				pixel_put_to_image(e, x, y, 0xFFFF00);
 		}
 		else
 		{
-			if (e->w->step_y <= 0)
+			if (e->w->step_y < 0)
 				pixel_put_to_image(e, x, y, 0x00FF00);
 			else
 				pixel_put_to_image(e, x, y, 0x0000FF);

@@ -92,13 +92,13 @@ void			draw_map(t_env *e)
 {
 	int			x;
 	x = 0;
-	while (x <= WIDTH)
+	while (x < WIDTH)
 	{
 		init_value_w3d(x, e->w);
 		check_ray_dist(e->w);
 		check_hit_wall(e->w);
 		calc_height_draw(e->w);
 		draw_vertical_line(e, x, e->w->start, e->w->end);
-		++x;
+		x++;
 	}
 }
