@@ -7,7 +7,6 @@
 # define WIDTH				800
 # define HEIGHT				600
 # define ECHAP				53
-# define H					4
 # define SPACE				49
 # define KEY_UP				126
 # define KEY_RIGHT			124
@@ -15,6 +14,7 @@
 # define KEY_LEFT			123
 # define KEY_A				0
 # define KEY_D				2
+# define KEY_H				4
 # define KEYRELEASE 		3
 # define KEYRELEASE_MASK	(1L<<1)
 # define KEYPRESS 			2
@@ -45,7 +45,6 @@ typedef	struct		s_w3d
 {
 	double			pos_x;
 	double			pos_y;
-	double			pos_z;
 	double			dir_x;
 	double			dir_y;
 	double			plane_x;
@@ -76,12 +75,9 @@ typedef struct		s_env
 {
 	void			*mlx;
 	void			*win;
-	int 			mapWidth;
-	int 			mapHeight;
-	int				side;
 	int 			help;
 	int				change_color;
-	t_img			img[5];
+	t_img			img[1];
 	t_arrow 		key;
 	t_w3d			*w;
 }					t_env;
@@ -90,8 +86,7 @@ void				ft_msg_error(char *msg);
 int					key_hook(int keycode, t_env *e);
 int					key_release(int keycode, t_env *e);
 int					expose_hook(t_env *e);
-void				sky_put_to_image(t_env *e, double x, double y);
-void				pixel_put_to_image(t_env *e, double x, double y, int color);
+void				pixel_put_to_image(t_env *e, int x, int y, int color);
 void				display_menu(t_env *e);
 int					quit_program(t_env *e);
 int					check_file_error(char *file);
@@ -99,8 +94,6 @@ int					generate_map(int x, int y);
 t_w3d				*init_w3d();
 void				init_arrow(t_arrow*key);
 void				init_env_value(t_env *e);
-int					init_texture(t_env *e);
-void				init_img_value(t_env *e);
 void				draw_map(t_env *e);
 void				straffe_left(t_env *e);
 void				straffe_right(t_env *e);
@@ -109,6 +102,6 @@ void				move_right(t_env *e);
 void				move_down(t_env *e);
 void				move_left(t_env *e);
 void				move(t_env *e);
-int 				draw_vertical_line(t_env *e, double x, int start, int end);
+int 				draw_vertical_line(t_env *e, int x, int start, int end);
 
 #endif

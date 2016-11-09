@@ -14,8 +14,8 @@
 
 int				quit_program(t_env *e)
 {
+	free(e->w);
 	mlx_destroy_image(e->mlx, e->img[0].img);
-	mlx_destroy_image(e->mlx, e->img[1].img);
 	mlx_destroy_window(e->mlx, e->win);
 	exit(1);
 	return (0);

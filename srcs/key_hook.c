@@ -23,14 +23,14 @@ int				key_hook2(int keycode, t_env *e)
 
 int				key_hook(int keycode, t_env *e)
 {
-	if (keycode == H)
+	if (keycode == KEY_H)
 		e->help = (e->help == 1) ? 0 : 1;
-	if (keycode == SPACE)
+	/*if (keycode == SPACE)
 	{
 		e->change_color++;
 		if (e->change_color == 3)
 			e->change_color = 0;
-	}
+	}*/
 	if (keycode == KEY_UP)
 		e->key.up = 1;
 	if (keycode == KEY_RIGHT)

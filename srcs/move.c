@@ -14,10 +14,10 @@
 
 void		move_up(t_env *e)
 {
-	if (generate_map((int)(e->w->pos_x + e->w->dir_x * 0.1),
+	if (generate_map((int)(e->w->pos_x + e->w->dir_x * 0.1), \
 				(int)(e->w->pos_y)) == 0)
 		e->w->pos_x += e->w->dir_x * 0.1;
-	if (generate_map((int)(e->w->pos_x),
+	if (generate_map((int)(e->w->pos_x), \
 				(int)(e->w->pos_y + e->w->dir_y * 0.1)) == 0)
 		e->w->pos_y += e->w->dir_y * 0.1;
 }
@@ -31,18 +31,18 @@ void		move_right(t_env *e)
 	e->w->dir_x = e->w->dir_x * cos(-1 * 0.05) - e->w->dir_y * sin(-1 * 0.05);
 	e->w->dir_y = olddirx * sin(-1 * 0.05) + e->w->dir_y * cos(-1 * 0.05);
 	oldplanex = e->w->plane_x;
-	e->w->plane_x = e->w->plane_x * cos(-1 * 0.05) -
+	e->w->plane_x = e->w->plane_x * cos(-1 * 0.05) - \
 		e->w->plane_y * sin(-1 * 0.05);
-	e->w->plane_y = oldplanex * sin(-1 * 0.05) +
+	e->w->plane_y = oldplanex * sin(-1 * 0.05) + \
 		e->w->plane_y * cos(-1 * 0.05);
 }
 
 void		move_down(t_env *e)
 {
-	if (generate_map((int)(e->w->pos_x - e->w->dir_x * 0.1),
+	if (generate_map((int)(e->w->pos_x - e->w->dir_x * 0.1), \
 				(int)(e->w->pos_y)) == 0)
 		e->w->pos_x -= e->w->dir_x * 0.1;
-	if (generate_map((int)(e->w->pos_x),
+	if (generate_map((int)(e->w->pos_x), \
 				(int)(e->w->pos_y - e->w->dir_y * 0.1)) == 0)
 		e->w->pos_y -= e->w->dir_y * 0.1;
 }

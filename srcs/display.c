@@ -12,7 +12,7 @@
 
 #include "../includes/wolf3d.h"
 
-void		pixel_put_to_image(t_env *e, double x, double y, int color)
+void		pixel_put_to_image(t_env *e, int x, int y, int color)
 {
 	int		pos;
 
@@ -31,27 +31,7 @@ void		pixel_put_to_image(t_env *e, double x, double y, int color)
 	}
 }
 
-void		sky_put_to_image(t_env *e, double x, double y)
-{
-	int		pos;
-
-	pos = ((y * e->img[0].sline) + (x * (e->img[0].bpp / 8)));
-	e->img[0].data[pos] = e->img[1].data[pos];
-	e->img[0].data[pos + 1] = e->img[1].data[pos + 1];
-	e->img[0].data[pos + 2] = e->img[1].data[pos + 2];
-}
-
-void		draw_ground_and_sky(t_env *e, int x, int end)
-{
-	while (end < HEIGHT)
-	{
-		sky_put_to_image(e, x, HEIGHT - end - 1);
-		pixel_put_to_image(e, x, end, 0xFFFFFF);
-		end++;
-	}
-}
-
-int			draw_vertical_line(t_env *e, double x, int start, int end)
+int			draw_vertical_line(t_env *e, int x, int start, int end)
 {
 	int		y;
 
@@ -74,6 +54,5 @@ int			draw_vertical_line(t_env *e, double x, int start, int end)
 		}
 		y++;
 	}
-	draw_ground_and_sky(e, x, end);
 	return (1);
 }

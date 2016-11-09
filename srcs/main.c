@@ -22,14 +22,17 @@ int			main(void)
 		ft_msg_error("MLX INIT FAIL");
 	if (!(e->win = mlx_new_window(e->mlx, WIDTH, HEIGHT, "Wolf3D")))
 		ft_msg_error("WINDOW CREATION FAIL");
-	init_img_value(e);
+	if (!(e->img[0].img = mlx_new_image(e->mlx, WIDTH, HEIGHT)))
+		ft_msg_error("CREATE IMAGE FAIL");
+	if (!(e->img[0].data = mlx_get_data_addr(e->img[0].img, &(e->img[0].bpp), \
+		&(e->img[0].sline), &(e->img[0].endian))))
+		ft_msg_error("GET DATA ADDR FAIL");
 	init_env_value(e);
-	if (init_texture(e) == -1)
-		ft_msg_error("TEXTURE CREATION FAIL");
 	mlx_hook(e->win, EXPOSE, EXPOSE_MASK, expose_hook, e);
 	mlx_hook(e->win, KEYPRESS, KEYPRESS_MASK, key_hook, e);
 	mlx_hook(e->win, KEYRELEASE, KEYRELEASE_MASK, key_release, e);
 	mlx_hook(e->win, DESTROY_NOTIFY, DESTROY_MASK, quit_program, e);
+	mlx_do_key_autorepeaton(e->mlx);
 	mlx_loop(e->mlx);
 	return (0);
 }
